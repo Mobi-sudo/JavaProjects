@@ -3,10 +3,10 @@ import java.time.format.DateTimeFormatter;
 
 public class Expense {
     private String item;
-    private LocalDate date; // Changed from String to LocalDate
+    private LocalDate date; 
     private double price;
 
-    public Expense(String item, LocalDate date, double price) { // Changed parameter type
+    public Expense(String item, LocalDate date, double price) { 
         this.item = item;
         this.date = date;
         this.price = price;
@@ -16,7 +16,7 @@ public class Expense {
         return item;
     }
 
-    public LocalDate getDate() { // Changed return type
+    public LocalDate getDate() { 
         return date;
     }
 
