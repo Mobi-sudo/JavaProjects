@@ -1,9 +1,12 @@
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class ExpenseTracker {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        expenselist myExpenselist = new expenselist();
 
         System.out.print("Enter Number of expenses: ");
         int numexpenses = scanner.nextInt();
@@ -22,7 +25,17 @@ public class ExpenseTracker {
                 System.out.println("Invalid input! Item name must only contain letters and spaces.");
                 
             }
-            
+            LocalDate date; 
+            while (true) {
+                System.out.print("Enter Date (YYYY-MM-DD): ");
+                String input = scanner.nextLine();
+                try {
+                    date = LocalDate.parse(input, DateTimeFormatter.ISO_LOCAL_DATE);
+                    break;
+                } catch (DateTimeParseException e) {
+                    System.out.println("Invalid date! Please enter a valid calendar date in YYYY-MM-DD format.");
+                }
+            }
             double price;
             while (true) {
                 System.out.print("Enter Item Price: ");
@@ -36,10 +49,9 @@ public class ExpenseTracker {
                 }
             }
 
-            Expense newExpense = new Expense(item, price);
-            myExpenselist.addToList(newExpense);
+            Expense newExpense = new Expense(item, date, price);
+            ExpenseMySQL.addExpense(newExpense);
         }
-        myExpenselist.displayExpenseList();
         scanner.close();
     }
 }

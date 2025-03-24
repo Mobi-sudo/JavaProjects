@@ -1,31 +1,31 @@
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+
 public class Expense {
     private String item;
-    private String date;
+    private LocalDate date; // Changed from String to LocalDate
     private double price;
 
-    public Expense(String item, double price){
+    public Expense(String item, LocalDate date, double price) { // Changed parameter type
         this.item = item;
-        this.date = getDate();
+        this.date = date;
         this.price = price;
     }
 
-    public String getItem(){
+    public String getItem() {
         return item;
     }
-    
-    public String getDate(){
-        LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        return now.format(formatter);
+
+    public LocalDate getDate() { // Changed return type
+        return date;
     }
-        public double getPrice(){
+
+    public double getPrice() {
         return price;
     }
 
     @Override
-    public String toString(){
-        return "Item: " + item + " , Date: " + date + " , Price: " + price;
+    public String toString() {
+        return "Item: " + item + " , Date: " + date.format(DateTimeFormatter.ISO_LOCAL_DATE) + " , Price: " + price;
     }
 }
