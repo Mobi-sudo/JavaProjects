@@ -6,7 +6,7 @@ import java.sql.SQLException;
 public class ExpenseMySQL {
     private static final String URL = "jdbc:mysql://127.0.0.1:3306/expense_schema";
     private static final String USER = "root";
-    private static final String PASSWORD = "Mobi10212002";
+    private static final String PASSWORD = "12345";
 
     public static Connection connect() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASSWORD);
